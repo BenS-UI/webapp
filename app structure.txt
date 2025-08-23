@@ -1,0 +1,20 @@
+app/
+  layout.tsx
+  globals.css
+  page.tsx
+  @overlay/
+    default.tsx
+    (.)blog/page.tsx
+    (.)playground/page.tsx
+  blog/page.tsx
+  playground/page.tsx
+components/
+  Navbar.tsx
+  ThemeToggle.tsx
+  OverlayFrame.tsx
+  MiniPlayerSlot.tsx
+public/
+  css/         (empty for now; we’ll add your files later)
+  scripts/     (empty for now)
+  assets/      (empty for now)
+  images/      (put a temp logo or leave empty)
