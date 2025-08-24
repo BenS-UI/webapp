@@ -1,31 +1,23 @@
+/* public/css/app.css */
 #overlay-root {
   position: fixed;
   inset: 0;
   background: var(--bg, #0a0c10);
   z-index: 999;
-  display: none;
-}
-#overlay-root[data-open="true"] { display: block; }
-#overlay-root .overlay-inner {
-  min-height: 100dvh;
-  padding: calc(var(--nav-height, 64px) + 24px) 16px 32px;
-  display: flex;
+  display: none;                  /* hidden by default */
   align-items: center;
   justify-content: center;
 }
-body.is-overlay-open { overflow: hidden; }
 
-/* Inner wrapper for content */
+#overlay-root[data-open="true"] {  /* only visible when open */
+  display: flex;
+}
+
 #overlay-root .overlay-inner {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   padding: calc(var(--nav-height, 64px) + 24px) 1.5rem 3rem;
-  color: var(--color-primary, #eaffff);
   text-align: center;
-}
-
-/* Prevent background scroll when overlay is open */
-body.is-overlay-open {
-  overflow: hidden;
+  color: var(--fg, #e7f0f7);
 }

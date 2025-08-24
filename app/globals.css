@@ -1,0 +1,33 @@
+/* app/globals.css */
+:root {
+  --bg: #0a0c10;
+  --fg: #e7f0f7;
+  --nav-height: 64px;
+  --overlay-z: 999;
+  --widget-z: 2147483647;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+main { min-height: 100dvh; }
+
+/* Bare-min navbar look so you can see it */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  display: flex; align-items: center;
+  background: rgba(10, 12, 16, 0.6);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  z-index: 100;
+}
+.nav-container { width: min(1100px, 92%); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.nav-links { display: flex; gap: .75rem; list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--fg); text-decoration: none; font-size: .95rem; padding: .4rem .7rem; border-radius: .5rem; }
+
+/* Floating widgets */
+elevenlabs-convai { position: fixed; right: 16px; bottom: 16px; z-index: var(--widget-z); }
+[data-miniplayer-slot] { position: fixed; right: 16px; bottom: 88px; z-index: var(--widget-z); display: none; }
+
+/* Prevent background scroll when overlay is open */
+body.is-overlay-open { overflow: hidden; }
