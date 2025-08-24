@@ -1,10 +1,10 @@
-export const metadata = { title: "Blog — Ben Sandivar" };
-
-export default function BlogPage() {
+export default function Blog() {
   return (
-    <main style={{ paddingTop: "calc(var(--nav-height) + 24px)", paddingInline: 16 }}>
-      <h1>Blog</h1>
-      <p>Canonical page. Overlay version exists too.</p>
+    <main>
+      <section className="coming-soon">
+        <h1>Blog Coming Soon</h1>
+        <p>Short posts on design, tech, and clear craft.</p>
+      </section>
     </main>
   );
 }

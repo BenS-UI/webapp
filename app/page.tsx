@@ -1,8 +1,16 @@
 export default function Home() {
   return (
-    <main style={{ paddingTop: "calc(var(--nav-height) + 24px)", paddingInline: 16 }}>
-      <h1>Home is alive</h1>
-      <p>If you see this, rendering is good.</p>
+    <main>
+      <section id="hero">
+        {/* Copy your hero HTML here, converting class → className */}
+        <canvas id="gl"></canvas>
+        <div className="hero-content">
+          <h1>Ben Sandivar</h1>
+          <p>Transformative Ideas.</p>
+          <a href="#projects" className="scroll-arrow">→ View My Work</a>
+        </div>
+      </section>
+      {/* Keep other sections or add them later */}
     </main>
   );
 }

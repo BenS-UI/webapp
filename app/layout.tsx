@@ -3,7 +3,6 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import ThemeToggle from "../components/ThemeToggle";
-import OverlayFrame from "../components/OverlayFrame";
 import MiniPlayerSlot from "../components/MiniPlayerSlot";
 
 export const metadata: Metadata = {
@@ -12,18 +11,11 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function RootLayout({
-  children,
-  overlay,
-}: {
-  children: React.ReactNode;
-  overlay?: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Set saved theme early */}
-        <link rel="stylesheet" href="/css/app.css" />
+        {/* set saved theme early */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -34,27 +26,20 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* link global CSS */}
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/themes.css" />
+        <link rel="stylesheet" href="/css/navbar.css" />
+        <link rel="stylesheet" href="/css/app.css" />
       </head>
       <body>
-        {/* Persistent shell */}
         <Navbar />
         <ThemeToggle />
-
-        {/* ElevenLabs, mounted once */}
-        <elevenlabs-convai agent-id="agent_01k0a396khf3wr7ndjmt03pk33" />
-        <Script
-          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-          strategy="afterInteractive"
-        />
-
-        {/* Mini-player slot (logic later) */}
+        {/* persistent ElevenLabs widget */}
+        <elevenlabs-convai agent-id="agent_01k0a396khf3wr7ndjmt03pk33"></elevenlabs-convai>
+        <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" strategy="afterInteractive" />
         <MiniPlayerSlot />
-
-        {/* Main content */}
         {children}
-
-        {/* Overlay outlet */}
-        <OverlayFrame>{overlay}</OverlayFrame>
       </body>
     </html>
   );

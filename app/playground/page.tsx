@@ -1,10 +1,11 @@
-export const metadata = { title: "Playground — Ben Sandivar" };
-
-export default function PlaygroundPage() {
+export default function Playground() {
   return (
-    <main style={{ paddingTop: "calc(var(--nav-height) + 24px)", paddingInline: 16 }}>
-      <h1>Playground</h1>
-      <p>Canonical page. We’ll iframe buck-it.html later.</p>
+    <main style={{ paddingTop: "var(--nav-height)" }}>
+      <iframe
+        src="/buck-it.html"
+        title="Buck-It Playground"
+        style={{ width: "100%", height: "80vh", border: 0 }}
+      />
     </main>
   );
 }

@@ -1,35 +1,19 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
-  const navRef = useRef<HTMLElement>(null);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-    const setH = () => document.documentElement.style.setProperty("--nav-height", nav.offsetHeight + "px");
-    setH();
-    const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
-    onScroll();
-    addEventListener("resize", setH);
-    addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      removeEventListener("resize", setH);
-      removeEventListener("scroll", onScroll);
-    };
-  }, []);
-
   return (
-    <nav ref={navRef} className="navbar" role="navigation" aria-label="Primary">
+    <nav className="navbar" aria-label="Primary">
       <div className="nav-container">
-        <Link href="/#hero" className="logo" aria-label="Ben Sandivar — Home">Ben</Link>
-        <button className="more-btn" aria-expanded={open} onClick={() => setOpen(v => !v)} aria-label="Toggle Menu">☰</button>
-        <ul className="nav-links" data-open={open ? "true" : "false"}>
+        <Link href="/#hero" className="logo" aria-label="Home">
+          <img src="/images/B-logo-a.svg" alt="Ben Sandivar Logo" />
+        </Link>
+        <ul className="nav-links">
           <li><Link href="/#hero">Home</Link></li>
+          <li><Link href="/#gallery">Gallery</Link></li>
+          <li><Link href="/#projects">Work</Link></li>
           <li><Link href="/#music">Music</Link></li>
+          <li><Link href="/#about">About</Link></li>
+          <li><Link href="/#contact">Contact</Link></li>
           <li><Link href="/playground">Playground</Link></li>
           <li><Link href="/blog">Blog</Link></li>
         </ul>
