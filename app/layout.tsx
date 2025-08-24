@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Set saved theme early */}
+        <link rel="stylesheet" href="/css/app.css" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
