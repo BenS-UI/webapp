@@ -9,12 +9,12 @@ import MiniPlayerSlot from "../components/MiniPlayerSlot";
 export const metadata: Metadata = {
   title: "Ben Sandivar",
   description: "Webapp shell",
-  robots: { index: false, follow: true }
+  robots: { index: false, follow: true },
 };
 
 export default function RootLayout({
   children,
-  overlay
+  overlay,
 }: {
   children: React.ReactNode;
   overlay?: React.ReactNode;
@@ -31,12 +31,12 @@ export default function RootLayout({
                 const t = localStorage.getItem('theme');
                 if (t) document.documentElement.setAttribute('data-theme', t);
               } catch {}
-            `
+            `,
           }}
         />
-        {/* (We’ll add your real CSS later) */}
       </head>
       <body>
+        {/* Persistent shell */}
         <Navbar />
         <ThemeToggle />
 
@@ -47,15 +47,14 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* Mini-player slot (we'll wire later) */}
+        {/* Mini-player slot (logic later) */}
         <MiniPlayerSlot />
 
+        {/* Main content */}
         {children}
 
         {/* Overlay outlet */}
-        <OverlayFrame open={!!overlay}>{overlay}</OverlayFrame>
-
-        {/* (We’ll load your legacy scripts later) */}
+        <OverlayFrame>{overlay}</OverlayFrame>
       </body>
     </html>
   );

@@ -1,29 +1,20 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
-export default function OverlayFrame({
-  open,
-  children,
-}: {
-  open: boolean;
-  children: React.ReactNode;
-}) {
+export default function OverlayFrame({ children }: { children: React.ReactNode }) {
+  const hasChildren = React.Children.count(children) > 0;
+
   useEffect(() => {
-    if (open) {
-      document.body.classList.add("is-overlay-open");
-    } else {
-      document.body.classList.remove("is-overlay-open");
-    }
-  }, [open]);
+    document.body.classList.toggle("is-overlay-open", hasChildren);
+    return () => document.body.classList.remove("is-overlay-open");
+  }, [hasChildren]);
 
-  if (!open) return null;
+  if (!hasChildren) return null;
 
   return (
-    <div id="overlay-root" data-open={open}>
-      <div className="overlay-inner">
-        {children}
-      </div>
+    <div id="overlay-root" data-open="true" role="dialog" aria-modal="true">
+      <div className="overlay-inner">{children}</div>
     </div>
   );
 }
