@@ -1,10 +1,11 @@
+// app/playground/page.tsx
 export default function Playground() {
   return (
-    <main style={{ paddingTop: "var(--nav-height)" }}>
+    <main>
       <iframe
-        src="/buck-it.html"
+        src="/buck-it-embed.html"
         title="Buck-It Playground"
-        style={{ width: "100%", height: "80vh", border: 0 }}
+        style={{ width: "100%", height: "80vh", border: 0, display: "block" }}
       />
     </main>
   );

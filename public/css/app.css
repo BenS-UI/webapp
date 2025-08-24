@@ -1,23 +1,94 @@
-/* public/css/app.css */
-#overlay-root {
-  position: fixed;
+/* ===== Layout helpers ===== */
+:root {
+  /* adjust if your navbar is taller; we can auto-measure later */
+  --nav-height: 64px;
+}
+
+/* Full-page center utility */
+.center-page {
+  min-height: calc(100dvh - var(--nav-height));
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+/* ===== Blog Coming Soon ===== */
+.coming-soon {
+  composes: center-page;
+  /* if your build doesn't support 'composes', leave this line out and keep both blocks */
+  min-height: calc(100dvh - var(--nav-height));
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.coming-soon h1 {
+  font-family: var(--font-heading, "Gabarito", system-ui, sans-serif);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--color-primary, #eaffff);
+  margin: 0 0 0.5rem 0;
+}
+
+.coming-soon p {
+  margin: 0.35rem 0;
+  color: var(--color-text, #d9e1e8);
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  min-height: calc(100dvh - var(--nav-height));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px 16px;
+}
+
+.hero > canvas {
+  position: absolute;
   inset: 0;
-  background: var(--bg, #0a0c10);
-  z-index: 999;
-  display: none;                  /* hidden by default */
-  align-items: center;
-  justify-content: center;
-}
-
-#overlay-root[data-open="true"] {  /* only visible when open */
-  display: flex;
-}
-
-#overlay-root .overlay-inner {
   width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
   max-width: 900px;
   margin: 0 auto;
-  padding: calc(var(--nav-height, 64px) + 24px) 1.5rem 3rem;
-  text-align: center;
-  color: var(--fg, #e7f0f7);
 }
+
+.hero-content h1 {
+  font-family: var(--font-heading, "Gabarito", system-ui, sans-serif);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  line-height: 1.05;
+  margin: 0 0 0.5rem 0;
+  color: var(--color-primary, #eaffff);
+}
+
+.hero-content p {
+  margin: 0.25rem 0 0.75rem 0;
+  color: var(--color-text, #d9e1e8);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  opacity: 0.95;
+}
+
+.scroll-arrow {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, rgba(255,255,255,0.15));
+  background: color-mix(in oklab, var(--color-navbar-bg, rgba(10,12,16,0.6)) 85%, black);
+  color: var(--color-primary, #eaffff);
+  text-decoration: none;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+
+.scroll-arrow:hover { transform: translateY(-1px); }
